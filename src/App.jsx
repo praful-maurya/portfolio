@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useReducedMotion } from 'motion/react'
@@ -14,6 +14,17 @@ import Footer from './components/Footer.jsx'
 import { projects } from './data/projects.js'
 
 gsap.registerPlugin(ScrollTrigger)
+
+function getInitialTheme() {
+  try {
+    const savedTheme = window.localStorage.getItem('portfolio-theme')
+    if (savedTheme === 'dark' || savedTheme === 'light') return savedTheme
+  } catch (error) {
+    console.error('Unable to read the saved color theme.', error)
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
 
 function ScrollProgress() {
   const reduceMotion = useReducedMotion()
@@ -84,12 +95,28 @@ function ScrollScenes() {
 }
 
 export default function App() {
+  const [theme, setTheme] = useState(getInitialTheme)
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      'content',
+      theme === 'dark' ? '#1b1c19' : '#f5f3ee',
+    )
+
+    try {
+      window.localStorage.setItem('portfolio-theme', theme)
+    } catch (error) {
+      console.error('Unable to save the selected color theme.', error)
+    }
+  }, [theme])
+
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
       <ScrollProgress />
       <ScrollScenes />
-      <Navbar />
+      <Navbar theme={theme} onToggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
       <main id="main">
         <Hero />
         <ProjectShowcase projects={projects} />

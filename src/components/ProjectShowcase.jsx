@@ -76,7 +76,7 @@ export default function ProjectShowcase({ projects }) {
         <div className="project-list">
           {projects.map((project, index) => <ProjectItem key={project.number} project={project} index={index} />)}
         </div>
-        <div className="work-footnote"><span>01—04</span><span>Product interface mockups are original visual studies, not product screenshots.</span></div>
+        {/* <div className="work-footnote"><span>01—04</span><span>Product interface mockups are original visual studies, not product screenshots.</span></div> */}
       </div>
     </section>
   )

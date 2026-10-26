@@ -38,7 +38,7 @@ export default function ExperienceTimeline() {
             </motion.article>
           ))}
         </div>
-        <p className="experience-note">Timeline dates follow the brief; role highlights and metrics are drawn from the supplied resume.</p>
+        {/* <p className="experience-note">Timeline dates follow the brief; role highlights and metrics are drawn from the supplied resume.</p> */}
       </div>
     </section>
   )
