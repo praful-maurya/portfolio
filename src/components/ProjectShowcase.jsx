@@ -4,14 +4,13 @@ import { motion, useReducedMotion } from 'motion/react'
 import SectionHeading from './SectionHeading.jsx'
 import ProjectMockups from './ProjectMockups.jsx'
 
-function ProjectItem({ project, index }) {
+function ProjectItem({ project }) {
   const [expanded, setExpanded] = useState(false)
   const reduceMotion = useReducedMotion()
-  const reversed = index % 2 === 1
 
   return (
     <motion.article
-      className={`project-row${reversed ? ' project-row--reverse' : ''}`}
+      className="project-row"
       initial={reduceMotion ? false : { opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
@@ -80,7 +79,7 @@ export default function ProjectShowcase({ projects }) {
           id="work-title"
         />
         <div className="project-list">
-          {projects.map((project, index) => <ProjectItem key={project.number} project={project} index={index} />)}
+          {projects.map((project) => <ProjectItem key={project.number} project={project} />)}
         </div>
         <div className="work-footnote"><span>01—04</span><span>Product interface mockups are original visual studies, not product screenshots.</span></div>
       </div>
