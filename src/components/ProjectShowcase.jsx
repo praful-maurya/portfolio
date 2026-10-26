@@ -17,9 +17,15 @@ function ProjectItem({ project, index }) {
       viewport={{ once: true, amount: 0.12 }}
       transition={{ duration: reduceMotion ? 0 : 0.72, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="project-row__visual-wrap">
+      <motion.div
+        className="project-row__visual-wrap"
+        initial={reduceMotion ? false : { clipPath: 'inset(0 100% 0 0)' }}
+        whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: reduceMotion ? 0 : 0.8, ease: [0.22, 1, 0.36, 1] }}
+      >
         <ProjectMockups variant={project.variant} />
-      </div>
+      </motion.div>
       <div className="project-copy">
         <div className="project-copy__top"><span className="project-number">{project.number} / 04</span><span className="project-type">{project.type}</span></div>
         <h3>{project.name}</h3>

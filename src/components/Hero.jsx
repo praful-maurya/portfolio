@@ -24,8 +24,16 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
         >
-          Building digital experiences that work <em>beautifully.</em>
+          Praful<br />Maurya<span className="hero__period">.</span>
         </motion.h1>
+        <motion.p
+          className="hero__statement"
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.27 }}
+        >
+          Building digital experiences that work beautifully.
+        </motion.p>
         <motion.p
           className="hero__intro"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
