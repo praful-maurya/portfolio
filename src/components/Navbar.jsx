@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react'
 
 const links = [
   { href: '#work', label: 'Work' },
@@ -7,7 +7,7 @@ const links = [
   { href: '#about', label: 'About' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ theme, onToggleTheme }) {
   const [open, setOpen] = useState(false)
   const closeMenu = () => setOpen(false)
 
@@ -15,7 +15,7 @@ export default function Navbar() {
     <header className="site-header">
       <nav className="nav-shell" aria-label="Main navigation">
         <a className="wordmark" href="#top" onClick={closeMenu} aria-label="Praful Maurya, home">
-          PM<span className="wordmark__period">.</span>
+          Praful Maurya<span className="wordmark__period">.</span>
         </a>
         <div className={`nav-links${open ? ' nav-links--open' : ''}`}>
           {links.map((link) => (
@@ -25,6 +25,16 @@ export default function Navbar() {
             Let&apos;s talk <ArrowUpRight size={15} strokeWidth={1.7} />
           </a>
         </div>
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          aria-pressed={theme === 'dark'}
+          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        >
+          {theme === 'dark' ? <Sun size={17} strokeWidth={1.7} /> : <Moon size={17} strokeWidth={1.7} />}
+        </button>
         <button
           className="menu-toggle"
           type="button"
