@@ -48,6 +48,6 @@ npm run deploy
 ## Personalize
 
 - Replace `linkedin` and `github` in `src/data/profile.js` with your profile URLs. Leave either value blank to keep that link hidden.
-- The resume download is set to `/Praful-Maurya-Resume.pdf`.
+- The resume download uses the site's base path, so it resolves to `/portfolio/Praful-Maurya-Resume.pdf` on GitHub Pages.
 - Scroll motion respects reduced-motion settings; the GSAP parallax is limited to wider screens.
 - Project interface visuals are original CSS mockups, not screenshots of production products.
