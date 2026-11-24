@@ -20,16 +20,30 @@ npm run preview
 
 The production site is generated in `dist/`.
 
-## Deploy to Vercel
+## Deploy to GitHub Pages
 
-Import this folder as a Vercel project, or install and use the Vercel CLI:
+The site is configured for the project page at `https://praful-maurya.github.io/portfolio/`.
+
+One-time setup in the repository settings:
+
+1. Go to **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **Deploy from a branch**.
+3. Select the **`gh-pages`** branch and **`/ (root)`**, then save.
+
+After that, every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to the `gh-pages` branch. You can also trigger a deployment manually from the **Actions** tab.
+
+To deploy from your machine instead:
 
 ```bash
-npm install -g vercel
-vercel
+npm run deploy
 ```
 
-Vite is auto-detected. The build command is `npm run build` and the output directory is `dist`. For a production deployment, run `vercel --prod`.
+`npm run deploy` builds the site first (`predeploy`) and then publishes `dist/` with `.nojekyll` included.
+
+### Deploying somewhere else
+
+- For a custom domain or a `username.github.io` user site, set `VITE_BASE_PATH=/` when building (e.g. `VITE_BASE_PATH=/ npm run deploy`) and update `homepage` in `package.json`.
+- For a repo with a different name, change the base path in `vite.config.js` and `homepage` in `package.json` to match.
 
 ## Personalize
 

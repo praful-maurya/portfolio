@@ -4,5 +4,5 @@ export const profile = {
   location: 'Mumbai, India',
   linkedin: '',
   github: '',
-  resume: '/Praful-Maurya-Resume.pdf',
+  resume: `${import.meta.env.BASE_URL}Praful-Maurya-Resume.pdf`,
 }
